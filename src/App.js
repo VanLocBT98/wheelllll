@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import './App.css'
 
 function App() {
   const [hasLoadedRephael, setHasLoadedPhael] = useState(false);
@@ -43,14 +44,25 @@ function App() {
   useEffect(() => {
     if (hasLoadedWheelNav && hasLoadedRephael) {
       // This demo use two wheels on each other
-      let wheel = new window.wheelnav("wheelDiv");
-      wheel.initWheel(["1", "2", "3", "4",'5','6','10','2']);
+      let wheel = new window.wheelnav("piemenu");
+      wheel.clockwise = false;
+      wheel.wheelRadius = wheel.wheelRadius * 0.83;
       wheel.createWheel();
     }
   }, [hasLoadedWheelNav, hasLoadedRephael]);
   return (
     <div className="App">
-      <div id="wheelDiv"></div>
+     <div id='piemenu' data-wheelnav
+ data-wheelnav-slicepath='DonutSlice'
+ data-wheelnav-navangle='180'
+ data-wheelnav-cssmode 
+ data-wheelnav-init>
+  <div data-wheelnav-navitemtext='0' onmouseup='alert("Place your logic here.");'></div>
+  <div data-wheelnav-navitemtext='1' onmouseup='alert("Place your logic here.");'></div>
+  <div data-wheelnav-navitemtext='2' onmouseup='alert("Place your logic here.");'></div>
+  <div data-wheelnav-navitemtext='3' onmouseup='alert("Place your logic here.");'></div>
+  <div data-wheelnav-navitemtext='4' onmouseup='alert("Place your logic here.");'></div>
+</div>
     </div>
   );
 }
